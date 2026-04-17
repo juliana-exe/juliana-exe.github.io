@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacidade | Flashcards TI Concursos</title>
+  <meta name="description" content="Informações de privacidade e suporte do Flashcards TI Concursos.">
+  <style>
+    :root {
+      --bg: #0D0D0D;
+      --surface: #1A1A1A;
+      --surface2: #222222;
+      --border: #2A2A2A;
+      --neon: #00FF41;
+      --neonDim: rgba(0,255,65,0.12);
+      --neonBorder: rgba(0,255,65,0.30);
+      --purple: #7B2FBE;
+      --purpleLight: #B47FFF;
+      --text: #E8E8E8;
+      --textDim: #999999;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Segoe UI, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(123,47,190,0.20), transparent 28%),
+        radial-gradient(circle at left top, rgba(0,255,65,0.10), transparent 24%),
+        linear-gradient(180deg, #090909 0%, var(--bg) 100%);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+      background-size: 32px 32px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.20), rgba(0,0,0,0.72));
+      pointer-events: none;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(920px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header {
+      padding: 28px 0 14px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--neonBorder);
+      background: var(--neonDim);
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .back:hover { color: var(--neon); }
+
+    .hero {
+      padding: 18px 0 24px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--neonBorder);
+      background: rgba(255,255,255,0.03);
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--neon);
+      box-shadow: 0 0 14px rgba(0,255,65,0.5);
+    }
+
+    h1 {
+      margin: 18px 0 12px;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .lead {
+      margin: 0;
+      color: var(--textDim);
+      line-height: 1.75;
+      max-width: 64ch;
+    }
+
+    .stack {
+      display: grid;
+      gap: 18px;
+      padding: 14px 0 44px;
+    }
+
+    .card {
+      position: relative;
+      padding: 26px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, var(--surface), var(--surface2));
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 0 0 1px rgba(0,255,65,0.10), 0 18px 40px rgba(0,0,0,0.28);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--neon), var(--purpleLight));
+    }
+
+    .card h2 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+      letter-spacing: -0.02em;
+    }
+
+    .card p,
+    .card li {
+      margin: 0;
+      color: var(--textDim);
+      line-height: 1.72;
+    }
+
+    .card ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .highlight {
+      color: var(--neon);
+      font-weight: 700;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 16px;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .links a:hover { color: var(--neon); }
+
+    .footer {
+      padding: 0 0 36px;
+      color: var(--textDim);
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 20px, 920px); }
+      .card { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header container">
+    <a class="back" href="index.html">← Voltar para a página inicial</a>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="eyebrow">Privacidade e suporte</div>
+      <h1>Informações essenciais do Flashcards TI Concursos</h1>
+      <p class="lead">Esta página reúne referências gerais de contato e transparência para o site do aplicativo, mantendo a mesma identidade visual escura, tecnológica e contrastada da página principal.</p>
+    </section>
+
+    <section class="container stack">
+      <article class="card">
+        <h2>Uso desta página</h2>
+        <p>O objetivo deste conteúdo é oferecer um ponto de referência simples para visitantes que desejam acessar informações de privacidade, suporte e links públicos relacionados ao aplicativo <span class="highlight">Flashcards TI Concursos</span>.</p>
+      </article>
+
+      <article class="card">
+        <h2>Contato para suporte</h2>
+        <p>Em caso de dúvidas, solicitações gerais ou questões relacionadas ao aplicativo e ao site, utilize o e-mail: <span class="highlight">julianacore2@outlook.com</span>.</p>
+        <div class="links">
+          <a href="mailto:julianacore2@outlook.com">Enviar e-mail</a>
+          <a href="https://play.google.com/store/apps/details?id=com.dev.flashcardsti" target="_blank" rel="noopener noreferrer">Ver aplicativo no Google Play</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>Referências públicas</h2>
+        <ul>
+          <li>Arquivo de transparência para anúncios: <a class="highlight" href="app-ads.txt">app-ads.txt</a>.</li>
+          <li>Página inicial do site: <a class="highlight" href="index.html">index.html</a>.</li>
+          <li>Canal de contato principal para suporte: <span class="highlight">julianacore2@outlook.com</span>.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Atualizações</h2>
+        <p>Este conteúdo pode ser ajustado quando houver necessidade de refinamento visual, atualização de informações de contato ou reorganização das referências públicas disponíveis no site.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <span>Flashcards TI Concursos — página de privacidade e suporte.</span>
+  </footer>
+</body>
+</html>
