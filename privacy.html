@@ -52,7 +52,7 @@
     a { color: inherit; text-decoration: none; }
 
     .container {
-      width: min(1120px, calc(100% - 40px));
+      width: min(1360px, calc(100% - clamp(24px, 4vw, 120px)));
       margin: 0 auto;
     }
 
@@ -193,13 +193,34 @@
       font-size: 0.92rem;
     }
 
+    @media (min-width: 1400px) {
+      .stack {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .stack .card:first-child,
+      .stack .card:last-child {
+        grid-column: span 3;
+      }
+    }
+
     @media (min-width: 1600px) {
       .container {
-        width: min(1240px, calc(100% - 72px));
+        width: min(1540px, calc(100% - 96px));
       }
 
       h1 {
         font-size: clamp(2.8rem, 3.8vw, 4.4rem);
+      }
+
+      .card {
+        padding: 30px;
+      }
+
+      .card p,
+      .card li,
+      .lead {
+        font-size: 1.02rem;
       }
     }
 

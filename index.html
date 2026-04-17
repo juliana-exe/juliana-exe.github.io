@@ -29,7 +29,7 @@
       --radius-xl: 32px;
       --radius-lg: 24px;
       --radius-md: 18px;
-      --content: min(1320px, calc(100% - 48px));
+      --content: min(1760px, calc(100% - clamp(28px, 4vw, 140px)));
     }
 
     * { box-sizing: border-box; }
@@ -570,6 +570,28 @@
       gap: 16px;
     }
 
+    @media (min-width: 1400px) {
+      .hero-grid {
+        grid-template-columns: minmax(0, 1.25fr) minmax(420px, 0.75fr);
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(280px, 1fr));
+      }
+
+      .grid-4 {
+        grid-template-columns: repeat(4, minmax(240px, 1fr));
+      }
+
+      .discipline-list {
+        grid-template-columns: repeat(7, minmax(190px, 1fr));
+      }
+
+      .section-header p {
+        max-width: 90ch;
+      }
+    }
+
     @media (min-width: 1680px) {
       .hero {
         padding: 88px 0 42px;
@@ -583,8 +605,35 @@
         padding: 48px;
       }
 
-      .grid-4 {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+      .card {
+        padding: 28px;
+      }
+
+      .section-header h2 {
+        font-size: clamp(2rem, 2.8vw, 2.9rem);
+      }
+
+      .section-header p,
+      .card p,
+      .card li,
+      .discipline span,
+      .faq p {
+        font-size: 1.02rem;
+      }
+    }
+
+    @media (min-width: 2100px) {
+      :root {
+        --content: min(1960px, calc(100% - 180px));
+      }
+
+      h1 {
+        font-size: clamp(3.6rem, 4.8vw, 6rem);
+      }
+
+      .hero-copy,
+      .hero-visual {
+        padding: 54px;
       }
     }
 
