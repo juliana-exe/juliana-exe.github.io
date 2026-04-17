@@ -1,10 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacidade | Flashcards TI Concursos</title>
-  <meta name="description" content="Informações de privacidade e suporte do Flashcards TI Concursos.">
+  <title>Privacidade e Suporte | Flashcards TI Concursos</title>
+  <meta name="description" content="Informacoes de privacidade, suporte e referencias publicas do Flashcards TI Concursos.">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0D0D0D;
@@ -23,8 +27,8 @@
     * { box-sizing: border-box; }
     body {
       margin: 0;
-      font-family: Inter, Segoe UI, Arial, sans-serif;
       color: var(--text);
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
       background:
         radial-gradient(circle at top right, rgba(123,47,190,0.20), transparent 28%),
         radial-gradient(circle at left top, rgba(0,255,65,0.10), transparent 24%),
@@ -38,7 +42,7 @@
       background:
         linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-      background-size: 32px 32px;
+      background-size: 28px 28px;
       mask-image: linear-gradient(180deg, rgba(0,0,0,0.20), rgba(0,0,0,0.72));
       pointer-events: none;
     }
@@ -46,7 +50,7 @@
     a { color: inherit; text-decoration: none; }
 
     .container {
-      width: min(920px, calc(100% - 32px));
+      width: min(960px, calc(100% - 32px));
       margin: 0 auto;
     }
 
@@ -66,7 +70,8 @@
       font-weight: 700;
     }
 
-    .back:hover { color: var(--neon); }
+    .back:hover,
+    .links a:hover { color: var(--neon); }
 
     .hero {
       padding: 18px 0 24px;
@@ -87,11 +92,17 @@
 
     .eyebrow::before {
       content: "";
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--neon);
-      box-shadow: 0 0 14px rgba(0,255,65,0.5);
+      box-shadow: 0 0 16px rgba(0,255,65,0.55);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Orbitron", sans-serif;
     }
 
     h1 {
@@ -104,8 +115,8 @@
     .lead {
       margin: 0;
       color: var(--textDim);
-      line-height: 1.75;
-      max-width: 64ch;
+      line-height: 1.8;
+      max-width: 68ch;
     }
 
     .stack {
@@ -127,7 +138,8 @@
     .card::before {
       content: "";
       position: absolute;
-      inset: 0 auto auto 0;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 3px;
       background: linear-gradient(90deg, var(--neon), var(--purpleLight));
@@ -135,7 +147,7 @@
 
     .card h2 {
       margin: 0 0 12px;
-      font-size: 1.35rem;
+      font-size: 1.18rem;
       letter-spacing: -0.02em;
     }
 
@@ -143,11 +155,11 @@
     .card li {
       margin: 0;
       color: var(--textDim);
-      line-height: 1.72;
+      line-height: 1.78;
     }
 
     .card ul {
-      margin: 0;
+      margin: 12px 0 0;
       padding-left: 18px;
       display: grid;
       gap: 10px;
@@ -167,8 +179,6 @@
       font-weight: 700;
     }
 
-    .links a:hover { color: var(--neon); }
-
     .footer {
       padding: 0 0 36px;
       color: var(--textDim);
@@ -176,56 +186,71 @@
     }
 
     @media (max-width: 640px) {
-      .container { width: min(100% - 20px, 920px); }
+      .container { width: min(100% - 20px, 960px); }
       .card { padding: 22px; }
     }
   </style>
 </head>
 <body>
   <header class="header container">
-    <a class="back" href="index.html">← Voltar para a página inicial</a>
+    <a class="back" href="index.html">Voltar para a pagina inicial</a>
   </header>
 
   <main>
     <section class="hero container">
-      <div class="eyebrow">Privacidade e suporte</div>
-      <h1>Informações essenciais do Flashcards TI Concursos</h1>
-      <p class="lead">Esta página reúne referências gerais de contato e transparência para o site do aplicativo, mantendo a mesma identidade visual escura, tecnológica e contrastada da página principal.</p>
+      <div class="eyebrow">Privacidade, suporte e referencias</div>
+      <h1>Informacoes essenciais do Flashcards TI Concursos</h1>
+      <p class="lead">Esta pagina centraliza informacoes de contato, pontos gerais de privacidade e referencias publicas do site oficial de apoio ao aplicativo.</p>
     </section>
 
     <section class="container stack">
       <article class="card">
-        <h2>Uso desta página</h2>
-        <p>O objetivo deste conteúdo é oferecer um ponto de referência simples para visitantes que desejam acessar informações de privacidade, suporte e links públicos relacionados ao aplicativo <span class="highlight">Flashcards TI Concursos</span>.</p>
-      </article>
-
-      <article class="card">
         <h2>Contato para suporte</h2>
-        <p>Em caso de dúvidas, solicitações gerais ou questões relacionadas ao aplicativo e ao site, utilize o e-mail: <span class="highlight">julianacore2@outlook.com</span>.</p>
+        <p>Para duvidas sobre o aplicativo, suporte geral ou assuntos relacionados ao site, utilize o e-mail oficial <span class="highlight">julianacore2@outlook.com</span>.</p>
         <div class="links">
           <a href="mailto:julianacore2@outlook.com">Enviar e-mail</a>
-          <a href="https://play.google.com/store/apps/details?id=com.dev.flashcardsti" target="_blank" rel="noopener noreferrer">Ver aplicativo no Google Play</a>
+          <a href="https://play.google.com/store/apps/details?id=com.dev.flashcardsti" target="_blank" rel="noopener noreferrer">Ver aplicativo na Google Play</a>
         </div>
       </article>
 
       <article class="card">
-        <h2>Referências públicas</h2>
+        <h2>Informacoes gerais de privacidade</h2>
         <ul>
-          <li>Arquivo de transparência para anúncios: <a class="highlight" href="app-ads.txt">app-ads.txt</a>.</li>
-          <li>Página inicial do site: <a class="highlight" href="index.html">index.html</a>.</li>
-          <li>Canal de contato principal para suporte: <span class="highlight">julianacore2@outlook.com</span>.</li>
+          <li>O aplicativo pode utilizar dados locais relacionados ao uso, revisao e configuracoes necessarias para funcionamento dos recursos oferecidos.</li>
+          <li>Compras e validacoes de itens premium podem depender de integracoes da loja oficial do Android.</li>
+          <li>Recursos de anuncios e faturamento podem envolver servicos de terceiros conforme o ecossistema da plataforma.</li>
+          <li>Este site existe como pagina publica de apoio, contato e transparencia para o aplicativo.</li>
         </ul>
       </article>
 
       <article class="card">
-        <h2>Atualizações</h2>
-        <p>Este conteúdo pode ser ajustado quando houver necessidade de refinamento visual, atualização de informações de contato ou reorganização das referências públicas disponíveis no site.</p>
+        <h2>Referencias publicas do dominio</h2>
+        <ul>
+          <li>Pagina inicial do site: <a class="highlight" href="index.html">index.html</a>.</li>
+          <li>Arquivo de transparencia para anuncios: <a class="highlight" href="app-ads.txt">app-ads.txt</a>.</li>
+          <li>Canal principal de suporte: <span class="highlight">julianacore2@outlook.com</span>.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Como usar melhor o app</h2>
+        <ul>
+          <li>Comece por uma materia central do seu edital.</li>
+          <li>Use os flashcards para revisao curta e recorrente.</li>
+          <li>Crie cards personalizados com seus erros frequentes.</li>
+          <li>Use o simulado para validar retencao e ajustar a proxima revisao.</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>Atualizacoes deste site</h2>
+        <p>Esta pagina pode ser refinada ao longo do tempo para manter o suporte, os links publicos e as informacoes de contato do aplicativo consistentes com a versao publicada.</p>
       </article>
     </section>
   </main>
 
   <footer class="footer container">
-    <span>Flashcards TI Concursos — página de privacidade e suporte.</span>
+    <span>Flashcards TI Concursos — privacidade, suporte e referencias publicas.</span>
   </footer>
 </body>
 </html>

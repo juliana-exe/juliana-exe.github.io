@@ -1,10 +1,14 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flashcards TI Concursos</title>
-  <meta name="description" content="Flashcards TI Concursos: revise conteúdos de tecnologia para concursos públicos com flashcards, simulados, filtros por matéria e estudos personalizados.">
+  <meta name="description" content="Flashcards TI Concursos: revise conteudos de tecnologia para concursos publicos com flashcards, simulados, filtros por materia e estudo personalizado.">
+  <meta name="theme-color" content="#0D0D0D">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0D0D0D;
@@ -18,19 +22,24 @@
       --purpleLight: #B47FFF;
       --text: #E8E8E8;
       --textDim: #999999;
-      --shadow: 0 0 0 1px var(--neonBorder), 0 0 30px rgba(0,255,65,0.08);
+      --blackSoft: #090909;
+      --shadow: 0 0 0 1px rgba(0,255,65,0.12), 0 20px 60px rgba(0,0,0,0.36);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --content: min(1180px, calc(100% - 32px));
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, Segoe UI, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top right, rgba(123,47,190,0.22), transparent 28%),
-        radial-gradient(circle at left top, rgba(0,255,65,0.12), transparent 24%),
-        linear-gradient(180deg, #090909 0%, var(--bg) 100%);
       color: var(--text);
+      font-family: "Space Grotesk", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(0,255,65,0.12), transparent 26%),
+        radial-gradient(circle at 88% 12%, rgba(123,47,190,0.22), transparent 24%),
+        linear-gradient(180deg, var(--blackSoft) 0%, var(--bg) 100%);
       min-height: 100vh;
     }
 
@@ -41,23 +50,23 @@
       background:
         linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
-      background-size: 32px 32px;
-      mask-image: linear-gradient(180deg, rgba(0,0,0,0.22), rgba(0,0,0,0.7));
+      background-size: 28px 28px;
+      mask-image: linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.72));
       pointer-events: none;
     }
 
     a { color: inherit; text-decoration: none; }
 
     .container {
-      width: min(1180px, calc(100% - 32px));
+      width: var(--content);
       margin: 0 auto;
     }
 
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 10;
-      backdrop-filter: blur(16px);
+      z-index: 20;
+      backdrop-filter: blur(18px);
       background: rgba(13,13,13,0.78);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
@@ -74,31 +83,47 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      font-weight: 800;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-size: 0.93rem;
+      min-width: 0;
     }
 
-    .brand-badge {
+    .brand-mark {
       width: 14px;
       height: 14px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--neon), var(--purpleLight));
-      box-shadow: 0 0 18px rgba(0,255,65,0.45);
+      box-shadow: 0 0 20px rgba(0,255,65,0.5);
+      flex: 0 0 auto;
+    }
+
+    .brand strong {
+      display: block;
+      font-family: "Orbitron", sans-serif;
+      font-size: 0.92rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .brand span {
+      display: block;
+      color: var(--textDim);
+      font-size: 0.83rem;
     }
 
     .nav {
       display: flex;
+      align-items: center;
       gap: 18px;
       flex-wrap: wrap;
-      color: var(--textDim);
       font-size: 0.95rem;
+      color: var(--textDim);
     }
 
     .nav a:hover,
-    .inline-links a:hover,
-    .footer a:hover { color: var(--neon); }
+    .footer-links a:hover,
+    .faq a:hover,
+    .support-links a:hover {
+      color: var(--neon);
+    }
 
     .hero {
       padding: 72px 0 36px;
@@ -106,28 +131,29 @@
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
-      align-items: center;
+      grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
+      gap: 26px;
+      align-items: stretch;
     }
 
     .panel {
       position: relative;
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      box-shadow: var(--shadow);
       overflow: hidden;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.012));
+      box-shadow: var(--shadow);
     }
 
     .panel::after {
       content: "";
       position: absolute;
-      inset: auto -20% -45% auto;
-      width: 280px;
-      height: 280px;
+      right: -90px;
+      bottom: -90px;
+      width: 260px;
+      height: 260px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(123,47,190,0.25), transparent 68%);
+      background: radial-gradient(circle, rgba(123,47,190,0.28), transparent 68%);
       pointer-events: none;
     }
 
@@ -136,61 +162,65 @@
     }
 
     .eyebrow,
-    .tag {
+    .pill {
       display: inline-flex;
       align-items: center;
       gap: 10px;
       padding: 10px 14px;
       border-radius: 999px;
+      border: 1px solid var(--neonBorder);
+      background: rgba(255,255,255,0.03);
       font-size: 0.78rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--text);
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--neonBorder);
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
     }
 
     .eyebrow::before,
-    .tag::before {
+    .pill::before {
       content: "";
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--neon);
-      box-shadow: 0 0 14px rgba(0,255,65,0.6);
+      box-shadow: 0 0 16px rgba(0,255,65,0.55);
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Orbitron", sans-serif;
     }
 
     h1 {
-      margin: 20px 0 14px;
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      margin: 18px 0 14px;
+      font-size: clamp(2.5rem, 6vw, 4.9rem);
       line-height: 0.95;
       letter-spacing: -0.04em;
     }
 
     .accent {
-      display: inline-block;
       color: var(--neon);
-      text-shadow: 0 0 24px rgba(0,255,65,0.25);
+      text-shadow: 0 0 24px rgba(0,255,65,0.2);
     }
 
     .lead {
-      margin: 0 0 26px;
-      max-width: 62ch;
+      margin: 0 0 28px;
+      max-width: 64ch;
       color: var(--textDim);
-      font-size: 1.05rem;
-      line-height: 1.75;
+      font-size: 1.03rem;
+      line-height: 1.8;
     }
 
     .cta-row {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 28px;
+      margin-bottom: 26px;
     }
 
     .button,
-    .ghost-button {
+    .ghost-button,
+    .support-links a {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -204,18 +234,20 @@
 
     .button {
       color: #07110a;
-      background: linear-gradient(135deg, var(--neon), #8CFFAA);
-      box-shadow: 0 18px 40px rgba(0,255,65,0.18);
+      background: linear-gradient(135deg, var(--neon), #8cffaa);
+      box-shadow: 0 18px 38px rgba(0,255,65,0.18);
     }
 
-    .ghost-button {
-      border: 1px solid var(--neonBorder);
-      background: var(--neonDim);
+    .ghost-button,
+    .support-links a {
       color: var(--text);
+      background: var(--neonDim);
+      border: 1px solid var(--neonBorder);
     }
 
     .button:hover,
-    .ghost-button:hover {
+    .ghost-button:hover,
+    .support-links a:hover {
       transform: translateY(-2px);
     }
 
@@ -227,8 +259,8 @@
 
     .stat {
       padding: 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.025);
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.05);
     }
 
@@ -236,44 +268,39 @@
       display: block;
       margin-bottom: 6px;
       color: var(--neon);
-      font-size: 1.1rem;
+      font-size: 1.05rem;
     }
 
     .stat span {
       color: var(--textDim);
-      font-size: 0.92rem;
-      line-height: 1.5;
+      font-size: 0.9rem;
+      line-height: 1.55;
     }
 
     .hero-visual {
-      min-height: 100%;
-      padding: 28px;
       display: grid;
       gap: 18px;
+      padding: 28px;
       align-content: center;
       background:
         linear-gradient(180deg, rgba(0,255,65,0.05), transparent 35%),
-        linear-gradient(135deg, rgba(123,47,190,0.14), rgba(0,0,0,0) 60%);
+        linear-gradient(135deg, rgba(123,47,190,0.16), transparent 60%);
     }
 
     .device {
-      position: relative;
+      width: min(100%, 330px);
       margin: 0 auto;
-      width: min(100%, 320px);
       padding: 22px;
       border-radius: 34px;
       background: linear-gradient(180deg, #141414, #101010);
       border: 1px solid rgba(255,255,255,0.08);
-      box-shadow:
-        0 30px 60px rgba(0,0,0,0.45),
-        inset 0 0 0 1px rgba(255,255,255,0.02),
-        0 0 40px rgba(123,47,190,0.14);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.45), 0 0 40px rgba(123,47,190,0.12);
     }
 
     .device::before {
       content: "";
       display: block;
-      width: 92px;
+      width: 90px;
       height: 8px;
       margin: 0 auto 18px;
       border-radius: 999px;
@@ -281,35 +308,34 @@
     }
 
     .app-card {
-      border-radius: 24px;
       padding: 22px;
+      border-radius: 24px;
+      text-align: center;
+      border: 1px solid var(--neonBorder);
       background:
         radial-gradient(circle at top, rgba(0,255,65,0.16), transparent 36%),
         linear-gradient(180deg, #111111 0%, #1A1A1A 100%);
-      border: 1px solid var(--neonBorder);
-      text-align: center;
-      overflow: hidden;
     }
 
     .app-card img {
       width: 112px;
       height: 112px;
-      border-radius: 24px;
       display: block;
       margin: 0 auto 18px;
-      box-shadow: 0 0 30px rgba(0,255,65,0.18);
+      border-radius: 24px;
+      box-shadow: 0 0 30px rgba(0,255,65,0.2);
     }
 
     .app-card h2 {
       margin: 0 0 10px;
-      font-size: 1.45rem;
+      font-size: 1.35rem;
     }
 
     .app-card p {
       margin: 0;
       color: var(--textDim);
-      line-height: 1.65;
-      font-size: 0.96rem;
+      line-height: 1.7;
+      font-size: 0.95rem;
     }
 
     .chip-row {
@@ -319,14 +345,14 @@
       justify-content: center;
     }
 
-    .tag {
+    .pill {
       font-size: 0.74rem;
       padding: 9px 12px;
       background: rgba(123,47,190,0.14);
       border-color: rgba(180,127,255,0.22);
     }
 
-    .tag::before {
+    .pill::before {
       background: var(--purpleLight);
       box-shadow: 0 0 14px rgba(180,127,255,0.45);
     }
@@ -341,267 +367,449 @@
 
     .section-header h2 {
       margin: 0 0 10px;
-      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
       letter-spacing: -0.03em;
     }
 
     .section-header p {
       margin: 0;
+      max-width: 72ch;
       color: var(--textDim);
-      line-height: 1.7;
-      max-width: 68ch;
+      line-height: 1.8;
     }
 
     .grid-3,
-    .grid-2 {
+    .grid-2,
+    .grid-4 {
       display: grid;
       gap: 18px;
     }
 
+    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
     .card {
       position: relative;
       padding: 24px;
+      border-radius: var(--radius-lg);
       background: linear-gradient(180deg, var(--surface), var(--surface2));
       border: 1px solid var(--border);
-      border-radius: 24px;
       overflow: hidden;
     }
 
     .card::before {
       content: "";
       position: absolute;
-      inset: 0 auto auto 0;
+      left: 0;
+      top: 0;
       width: 100%;
       height: 3px;
       background: linear-gradient(90deg, var(--neon), var(--purpleLight));
-      opacity: 0.85;
+      opacity: 0.9;
     }
 
-    .icon-box {
+    .icon-box,
+    .step-number {
       width: 48px;
       height: 48px;
       display: inline-grid;
       place-items: center;
-      border-radius: 14px;
       margin-bottom: 16px;
+      border-radius: 14px;
       background: linear-gradient(135deg, var(--neonDim), rgba(123,47,190,0.18));
       border: 1px solid rgba(255,255,255,0.08);
       color: var(--neon);
-      font-size: 1.2rem;
       font-weight: 800;
+      font-size: 1.05rem;
     }
 
     .card h3 {
       margin: 0 0 12px;
-      font-size: 1.2rem;
+      font-size: 1.08rem;
+      line-height: 1.35;
     }
 
     .card p,
     .card li {
+      margin: 0;
       color: var(--textDim);
-      line-height: 1.72;
-      font-size: 0.97rem;
+      line-height: 1.75;
     }
 
     .card ul {
-      margin: 0;
+      display: grid;
+      gap: 10px;
+      margin: 12px 0 0;
       padding-left: 18px;
     }
 
-    .study-card {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .study-card span {
-      display: inline-flex;
-      align-self: flex-start;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(0,255,65,0.08);
-      border: 1px solid rgba(0,255,65,0.18);
-      color: var(--neon);
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-weight: 700;
-    }
-
-    .support-box {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 18px;
+    .tutorial-grid .card {
       min-height: 100%;
     }
 
-    .inline-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      color: var(--textDim);
-      font-weight: 600;
+    .step-number {
+      background: linear-gradient(135deg, rgba(0,255,65,0.18), rgba(140,255,170,0.08));
+      box-shadow: inset 0 0 0 1px rgba(0,255,65,0.12);
     }
 
-    .footer {
-      padding: 32px 0 48px;
+    .discipline-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 14px;
+    }
+
+    .discipline {
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.025);
+      min-height: 100%;
+    }
+
+    .discipline strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+
+    .discipline span {
       color: var(--textDim);
+      line-height: 1.65;
       font-size: 0.92rem;
     }
 
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      padding-top: 20px;
+    .faq {
+      display: grid;
+      gap: 14px;
     }
 
-    @media (max-width: 960px) {
+    .faq details {
+      padding: 18px 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .faq summary {
+      cursor: pointer;
+      font-weight: 700;
+      list-style: none;
+    }
+
+    .faq summary::-webkit-details-marker { display: none; }
+
+    .faq p {
+      margin: 12px 0 0;
+      color: var(--textDim);
+      line-height: 1.75;
+    }
+
+    .support-box {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+    }
+
+    .support-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .support-note {
+      border-radius: 18px;
+      padding: 20px;
+      background: linear-gradient(180deg, rgba(123,47,190,0.14), rgba(0,255,65,0.06));
+      border: 1px solid rgba(180,127,255,0.22);
+    }
+
+    .support-note strong {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .support-note p,
+    .support-note li {
+      color: var(--textDim);
+      line-height: 1.72;
+    }
+
+    .support-note ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .footer {
+      padding: 34px 0 42px;
+    }
+
+    .footer-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--textDim);
+      font-size: 0.93rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 22px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    @media (max-width: 980px) {
       .hero-grid,
+      .support-box,
       .grid-3,
+      .grid-4,
       .grid-2 {
         grid-template-columns: 1fr;
       }
 
-      .hero-copy,
-      .hero-visual { padding: 28px; }
-      .hero-stats { grid-template-columns: 1fr; }
-      .topbar-inner { align-items: flex-start; }
+      .hero {
+        padding-top: 54px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
     }
 
-    @media (max-width: 640px) {
-      .container { width: min(100% - 20px, 1180px); }
-      .hero { padding-top: 44px; }
-      h1 { line-height: 1; }
-      .nav { gap: 12px; font-size: 0.9rem; }
+    @media (max-width: 720px) {
+      .container {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
       .hero-copy,
       .hero-visual,
-      .card { padding: 22px; }
-      .button,
-      .ghost-button { width: 100%; }
-      .cta-row { flex-direction: column; }
+      .card {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 11vw, 3.6rem);
+      }
+
+      .nav {
+        gap: 12px;
+      }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="brand" href="#top">
-        <span class="brand-badge"></span>
-        <span>Flashcards TI Concursos</span>
+      <a class="brand" href="#inicio">
+        <span class="brand-mark"></span>
+        <span>
+          <strong>Flashcards TI Concursos</strong>
+          <span>Site oficial de apoio, tutorial e suporte</span>
+        </span>
       </a>
       <nav class="nav">
         <a href="#recursos">Recursos</a>
-        <a href="#areas">Áreas de estudo</a>
-        <a href="#suporte">Privacidade e suporte</a>
+        <a href="#tutorial">Como usar</a>
+        <a href="#materias">Materias</a>
+        <a href="#suporte">Suporte</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
-    <section class="hero">
+  <main>
+    <section class="hero" id="inicio">
       <div class="container hero-grid">
         <div class="panel hero-copy">
-          <div class="eyebrow">Preparação estratégica para TI</div>
-          <h1>Domine a revisão para <span class="accent">concursos públicos</span> de tecnologia.</h1>
-          <p class="lead">
-            O Flashcards TI Concursos reúne revisões rápidas, simulados e organização por matéria para quem estuda conteúdos técnicos com foco em provas, retenção de temas recorrentes e prática constante.
-          </p>
+          <div class="eyebrow">Preparacao para concursos de TI</div>
+          <h1>Revise com mais ritmo. <span class="accent">Estude com mais criterio.</span></h1>
+          <p class="lead">O Flashcards TI Concursos foi pensado para quem precisa revisar conteudos de tecnologia com velocidade, repetir os temas que mais caem e treinar por materia ou banca sem transformar o estudo em algo confuso.</p>
           <div class="cta-row">
-            <a class="button" href="https://play.google.com/store/apps/details?id=com.dev.flashcardsti" target="_blank" rel="noopener noreferrer">Baixar no Google Play</a>
-            <a class="ghost-button" href="#recursos">Ver recursos</a>
+            <a class="button" href="https://play.google.com/store/apps/details?id=com.dev.flashcardsti" target="_blank" rel="noopener noreferrer">Abrir na Play Store</a>
+            <a class="ghost-button" href="#tutorial">Ver tutorial rapido</a>
           </div>
           <div class="hero-stats">
             <div class="stat">
               <strong>Flashcards</strong>
-              <span>Revisão objetiva para reforçar conceitos, siglas, normas e fundamentos técnicos.</span>
+              <span>Revisao objetiva para consolidar conceitos e memorizar pontos-chave.</span>
             </div>
             <div class="stat">
               <strong>Simulados</strong>
-              <span>Prática orientada para testar leitura, interpretação e tomada de decisão em TI.</span>
+              <span>Treinos para medir desempenho e revisar com foco no que precisa melhorar.</span>
             </div>
             <div class="stat">
-              <strong>Filtros</strong>
-              <span>Estude com recortes por matéria e banca para focar no que faz sentido para a sua prova.</span>
+              <strong>Estudo customizado</strong>
+              <span>Cards proprios, filtros e revisao por trilhas mais alinhadas ao seu edital.</span>
             </div>
           </div>
         </div>
 
-        <div class="panel hero-visual">
+        <aside class="panel hero-visual">
           <div class="device">
             <div class="app-card">
-              <img src="store-icon.png" alt="Ícone do aplicativo Flashcards TI Concursos">
+              <img src="store-icon.png" alt="Icone do Flashcards TI Concursos">
               <h2>Flashcards TI Concursos</h2>
-              <p>Visual direto, energia neon e estudo técnico organizado para transformar revisão em rotina produtiva.</p>
+              <p>Interface escura, contraste alto e fluxo direto para revisar tecnologia da informacao de forma repetivel e pratica.</p>
             </div>
           </div>
           <div class="chip-row">
-            <div class="tag">Sem anúncios na versão premium</div>
-            <div class="tag">Cards personalizados</div>
-            <div class="tag">Matéria e banca</div>
+            <span class="pill">Bancas</span>
+            <span class="pill">Filtros por materia</span>
+            <span class="pill">Modo simulado</span>
+            <span class="pill">Premium sem anuncios</span>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
 
     <section id="recursos">
       <div class="container">
         <div class="section-header">
-          <h2>Recursos pensados para a rotina de quem estuda TI</h2>
-          <p>Uma landing page com presença visual forte para comunicar foco, repetição e controle sobre o conteúdo cobrado em concursos de tecnologia.</p>
+          <h2>Recursos pensados para revisao rapida</h2>
+          <p>O site agora explica com mais clareza o que o aplicativo faz e como usar melhor cada parte da experiencia, mantendo a identidade visual do app.</p>
         </div>
         <div class="grid-3">
           <article class="card">
             <div class="icon-box">01</div>
-            <h3>Flashcards para revisão ativa</h3>
-            <p>Revise pontos-chave de redes, segurança, banco de dados, engenharia de software, governança, infraestrutura e outros temas cobrados com frequência.</p>
+            <h3>Flashcards para revisao recorrente</h3>
+            <p>Use os cards para revisar conceitos de TI em ciclos curtos. A proposta e repetir, reconhecer padroes e acelerar a lembranca durante o estudo de edital.</p>
           </article>
           <article class="card">
             <div class="icon-box">02</div>
-            <h3>Simulados com foco prático</h3>
-            <p>Teste seu desempenho em blocos de estudo voltados para reforçar raciocínio, memorização e identificação de lacunas antes da prova.</p>
+            <h3>Filtros por materia e banca</h3>
+            <p>Organize a revisao por conjuntos mais proximos da prova que voce vai enfrentar, escolhendo o recorte que faz mais sentido para o momento.</p>
           </article>
           <article class="card">
             <div class="icon-box">03</div>
-            <h3>Estudo filtrado do seu jeito</h3>
-            <p>Organize a preparação com filtros por matéria e banca, além da criação de cards personalizados para aprofundar assuntos específicos.</p>
+            <h3>Modo simulado para medir consistencia</h3>
+            <p>Quando quiser sair da revisao isolada e testar retencao, use o simulado para checar ritmo, erros recorrentes e pontos de fragilidade.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">04</div>
+            <h3>Cards personalizados</h3>
+            <p>Monte seus proprios decks com aquilo que voce erra mais ou com observacoes de aulas, livros e questoes anteriores.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">05</div>
+            <h3>Fluxo direto e visual de alto contraste</h3>
+            <p>O app prioriza leitura clara em ambiente escuro, com destaque em verde neon para acoes e estados importantes.</p>
+          </article>
+          <article class="card">
+            <div class="icon-box">06</div>
+            <h3>Versao premium</h3>
+            <p>Quem quiser estudar sem interrupcao pode desbloquear recursos premium e remover anuncios durante a rotina de revisao.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section id="areas">
+    <section id="tutorial">
       <div class="container">
         <div class="section-header">
-          <h2>Áreas de estudo em destaque</h2>
-          <p>Estrutura visual inspirada em ambiente de laboratório digital: escuro, contrastado e com acentos neon para destacar temas e fluxos de estudo.</p>
+          <h2>Tutorial rapido de uso</h2>
+          <p>Se voce acabou de instalar o app, este e o caminho mais eficiente para comecar sem perder tempo explorando tudo sozinho.</p>
+        </div>
+        <div class="grid-4 tutorial-grid">
+          <article class="card">
+            <div class="step-number">1</div>
+            <h3>Escolha um recorte de estudo</h3>
+            <p>Comece por uma materia ou por um conjunto de assuntos mais proximos da prova que voce quer prestar. O objetivo inicial e reduzir ruido.</p>
+          </article>
+          <article class="card">
+            <div class="step-number">2</div>
+            <h3>Revise com os flashcards</h3>
+            <p>Passe pelos cards com foco em reconhecimento rapido. Quando houver dificuldade, repita a sessao em blocos curtos em vez de alongar demais.</p>
+          </article>
+          <article class="card">
+            <div class="step-number">3</div>
+            <h3>Crie cards proprios</h3>
+            <p>Transforme erros frequentes e observacoes importantes em cards personalizados. Isso tende a aumentar a utilidade do app no medio prazo.</p>
+          </article>
+          <article class="card">
+            <div class="step-number">4</div>
+            <h3>Feche com simulado</h3>
+            <p>Use o simulado para medir retencao e identificar pontos fracos. Depois, volte aos flashcards da materia onde o desempenho caiu.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-header">
+          <h2>Boas praticas para aproveitar melhor o app</h2>
+          <p>Algumas rotinas simples fazem diferenca quando o objetivo e manter revisao constante ao longo da preparacao.</p>
         </div>
         <div class="grid-2">
-          <article class="card study-card">
-            <span>Base técnica</span>
-            <h3>Infraestrutura, redes e sistemas</h3>
-            <p>Consolide fundamentos sobre arquitetura de computadores, sistemas operacionais, redes, virtualização, cloud e administração de ambientes.</p>
+          <article class="card">
+            <h3>Rotina sugerida</h3>
+            <ul>
+              <li>Separe blocos curtos de revisao em vez de depender de sessoes longas e cansativas.</li>
+              <li>Use filtros por materia quando estiver consolidando base teorica.</li>
+              <li>Use filtros por banca quando quiser aproximar o estudo do estilo da prova.</li>
+              <li>Revise seus proprios cards depois de resolver questoes ou assistir aulas.</li>
+            </ul>
           </article>
-          <article class="card study-card">
-            <span>Dados</span>
-            <h3>Banco de dados e análise</h3>
-            <p>Revise modelagem, SQL, consultas, integridade, administração e conceitos ligados a organização e tratamento de dados.</p>
+          <article class="card">
+            <h3>Quando usar o premium</h3>
+            <ul>
+              <li>Se voce usa o app com frequencia e quer reduzir interrupcoes por anuncios.</li>
+              <li>Se pretende construir uma base pessoal de estudo com decks e revisoes proprias.</li>
+              <li>Se prefere concentrar toda a rotina de revisao dentro do aplicativo.</li>
+            </ul>
           </article>
-          <article class="card study-card">
-            <span>Desenvolvimento</span>
-            <h3>Lógica, programação e engenharia</h3>
-            <p>Fortaleça fundamentos de algoritmos, qualidade, versionamento, testes, APIs, arquitetura e práticas de construção de software.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="materias">
+      <div class="container">
+        <div class="section-header">
+          <h2>Areas de estudo</h2>
+          <p>O app foi pensado para cobrir a trilha central de tecnologia da informacao comum em concursos publicos, com foco em revisao objetiva.</p>
+        </div>
+        <div class="discipline-list">
+          <article class="discipline">
+            <strong>Algoritmos</strong>
+            <span>Revisao de logica, estruturas e raciocinio aplicado a resolucao de problemas.</span>
           </article>
-          <article class="card study-card">
-            <span>Gestão e segurança</span>
-            <h3>Governança, normas e proteção</h3>
-            <p>Estude segurança da informação, políticas, controles, continuidade, governança de TI e tópicos cobrados em editais técnicos.</p>
+          <article class="discipline">
+            <strong>Banco de Dados</strong>
+            <span>Conceitos, modelagem, comandos e fundamentos recorrentes em provas.</span>
+          </article>
+          <article class="discipline">
+            <strong>Redes</strong>
+            <span>Protocolos, camadas, enderecamento e topicos cobrados em tecnologia publica.</span>
+          </article>
+          <article class="discipline">
+            <strong>Seguranca</strong>
+            <span>Principios, controles, ameacas e fundamentos de protecao da informacao.</span>
+          </article>
+          <article class="discipline">
+            <strong>Engenharia de Software</strong>
+            <span>Processos, requisitos, qualidade, manutencao e organizacao do desenvolvimento.</span>
+          </article>
+          <article class="discipline">
+            <strong>Linguagens</strong>
+            <span>Conceitos de programacao, sintaxe, paradigma e pontos de cobranca frequente.</span>
+          </article>
+          <article class="discipline">
+            <strong>Sistemas Operacionais</strong>
+            <span>Memoria, processos, escalonamento, arquivos e fundamentos de ambiente computacional.</span>
           </article>
         </div>
       </div>
@@ -610,41 +818,55 @@
     <section id="suporte">
       <div class="container">
         <div class="section-header">
-          <h2>Privacidade, suporte e transparência</h2>
-          <p>Links essenciais para quem quer conhecer as políticas do app e acessar informações públicas relacionadas à presença do aplicativo.</p>
+          <h2>Suporte, FAQ e links publicos</h2>
+          <p>Esta area concentra informacoes uteis tanto para usuarios quanto para publicacao do aplicativo na loja.</p>
         </div>
-        <div class="grid-2">
-          <article class="card support-box">
-            <div>
-              <div class="icon-box">PX</div>
-              <h3>Política de privacidade</h3>
-              <p>Consulte a página dedicada para entender informações gerais sobre uso do aplicativo, contato e referências de suporte.</p>
-            </div>
-            <div class="inline-links">
-              <a href="privacy.html">Abrir privacy.html</a>
-            </div>
-          </article>
-          <article class="card support-box">
-            <div>
-              <div class="icon-box">AD</div>
-              <h3>Suporte e arquivos públicos</h3>
-              <p>Acesse o arquivo app-ads.txt e mantenha um caminho rápido para os materiais de referência do site.</p>
-            </div>
-            <div class="inline-links">
-              <a href="app-ads.txt">Abrir app-ads.txt</a>
-              <a href="https://play.google.com/store/apps/details?id=com.dev.flashcardsti" target="_blank" rel="noopener noreferrer">Página do app</a>
+
+        <div class="support-box">
+          <article class="card">
+            <h3>Fale com o suporte</h3>
+            <p>Para duvidas gerais, suporte relacionado ao app ou contato institucional, utilize o e-mail oficial informado abaixo.</p>
+            <div class="support-links">
+              <a href="mailto:julianacore2@outlook.com">julianacore2@outlook.com</a>
+              <a href="privacy.html">Politica e privacidade</a>
+              <a href="app-ads.txt">app-ads.txt</a>
             </div>
           </article>
+
+          <aside class="support-note">
+            <strong>Observacao importante</strong>
+            <p>O dominio deste site tambem hospeda o arquivo publico de transparencia para publicidade do app. Isso ajuda a manter a configuracao exigida pelo ecossistema de anuncios.</p>
+            <ul>
+              <li>Dominio publico ativo.</li>
+              <li>Pagina inicial do aplicativo publicada.</li>
+              <li>Arquivo app-ads.txt disponivel na raiz do dominio.</li>
+            </ul>
+          </aside>
+        </div>
+
+        <div class="faq" style="margin-top: 18px;">
+          <details>
+            <summary>Como comecar a estudar no app sem se perder?</summary>
+            <p>Comece escolhendo uma materia principal, revise os flashcards dessa trilha e depois avance para simulados curtos. Evite misturar muitos assuntos no primeiro uso.</p>
+          </details>
+          <details>
+            <summary>Quando vale a pena criar cards personalizados?</summary>
+            <p>Quando voce identificar erros repetidos, detalhes de teoria que sempre escapam ou observacoes importantes retiradas de questoes e materiais de apoio.</p>
+          </details>
+          <details>
+            <summary>O app serve apenas para memorizar?</summary>
+            <p>Nao. O uso ideal combina revisao, reforco de pontos fracos, filtros de estudo e simulados para transformar memoria em desempenho de prova.</p>
+          </details>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container footer-inner">
-      <span>Flashcards TI Concursos — visual neon para uma comunicação mais alinhada à marca do app.</span>
-      <div class="inline-links">
-        <a href="#top">Voltar ao topo</a>
+    <div class="container footer-wrap">
+      <span>Flashcards TI Concursos — site oficial de apoio, tutorial e suporte.</span>
+      <div class="footer-links">
+        <a href="https://play.google.com/store/apps/details?id=com.dev.flashcardsti" target="_blank" rel="noopener noreferrer">Google Play</a>
         <a href="privacy.html">Privacidade</a>
         <a href="app-ads.txt">app-ads.txt</a>
       </div>
